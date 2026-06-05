@@ -2,21 +2,43 @@
 
 <img src="assets/hexstrike-logo.png" alt="HexStrike AI 标志" width="220" style="margin-bottom: 20px;"/>
 
-# HexStrike AI v6.0 - 智能渗透测试平台
+# HexStrike AI v7.0 - 智能渗透测试平台
 ### 人工智能驱动的 MCP 网络安全自动化平台
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![安全](https://img.shields.io/badge/安全-渗透测试-red.svg)](https://github.com/370205504-cmyk/hexstrike-ai)
-[![版本](https://img.shields.io/badge/版本-6.0.0-orange.svg)](https://github.com/370205504-cmyk/hexstrike-ai/releases)
+[![版本](https://img.shields.io/badge/版本-7.0.0-orange.svg)](https://github.com/370205504-cmyk/hexstrike-ai/releases)
 [![工具](https://img.shields.io/badge/安全工具-150%2B-brightgreen.svg)](https://github.com/370205504-cmyk/hexstrike-ai)
 [![智能体](https://img.shields.io/badge/AI智能体-12%2B-purple.svg)](https://github.com/370205504-cmyk/hexstrike-ai)
 
 **先进的人工智能驱动渗透测试 MCP 框架，包含 150+ 安全工具和 12+ 自主 AI 智能体**
 
-[📋 新功能](#v60-的新功能) • [🏗️ 架构](#架构概览) • [🚀 安装](#安装) • [🛠️ 功能](#功能特性) • [🤖 AI智能体](#ai-智能体) • [📡 API参考](#api-参考)
+[🔥 v7.0 新特性](#v70-的新特性) • [📋 v6.0 新功能](#v60-的新功能) • [🏗️ 架构](#架构概览) • [🚀 安装](#安装) • [🛠️ 功能](#功能特性) • [🤖 AI智能体](#ai-智能体) • [📡 API参考](#api-参考)
 
 </div>
+
+---
+
+## 🔥 v7.0 的新特性
+
+HexStrike AI v7.0 带来了全面的架构升级和功能增强，将 AI 从工具操作员提升为渗透测试策略大师：
+
+### 🧠 AI 大脑升级
+- **智能决策引擎** - 完整的攻击链自主规划，从侦察到后渗透全流程优化
+- **故障恢复系统** - 智能错误分类与恢复策略，系统具备真正的韧性
+- **RAG 知识引擎** - 实时检索最新 CVE 和 Exploit-DB，不再依赖过时的知识库
+- **多模型协同** - 侦察、漏洞利用、权限维持等专精 Agent 协同决策
+
+### 🏗️ 架构内核重塑
+- **Celery 异步任务队列** - 耗时工具调用后台化，支持大规模并行扫描
+- **向量记忆系统** - 持久化历史扫描结果和攻击链，AI 具备记忆能力
+- **决策追踪与优化** - 完整记录和分析所有决策过程，支持迭代优化
+
+### 💎 攻防技术深化
+- **BOAZ 免杀框架增强** - 自定义 Loader、深度 EDR 绕过链、AI 协同动态 payload 生成
+- **主动蜜罐检测** - 可疑 IP 交互延迟和响应模式分析，提升对抗意识
+- **SAST/DAST 集成** - 深度代码审计，识别自动化扫描难以发现的业务逻辑漏洞
 
 ---
 
@@ -128,20 +150,45 @@ HexStrike AI v6.0 采用多智能体架构，包含自主 AI 智能体、智能�
 | `/api/intelligence/select-tools` | POST | 智能工具选择 |
 | `/api/intelligence/optimize-parameters` | POST | 参数优化 |
 
+### v7.0 增强版端点
+
+| 端点 | 方法 | 说明 |
+|------|------|------|
+| `/health` | GET | 健康检查 |
+| **AI 大脑** | | |
+| `/api/v1/analyze-target` | POST | 目标分析与攻击链生成 |
+| `/api/v1/knowledge-query` | POST | RAG 知识引擎查询 |
+| `/api/v1/multi-model-collaborate` | POST | 多模型协同决策 |
+| **异步任务** | | |
+| `/api/v1/execute-tool` | POST | 执行工具异步任务 |
+| `/api/v1/task-status/<task_id>` | GET | 查询任务状态 |
+| `/api/v1/tasks` | GET | 获取所有任务 |
+| **向量记忆** | | |
+| `/api/v1/memory/scan-result` | POST | 存储扫描结果 |
+| `/api/v1/memory/search` | POST | 搜索记忆内容 |
+| **攻防技术** | | |
+| `/api/v1/boaz/generate-payload` | POST | 生成免杀 Payload |
+| `/api/v1/anti-honeypot/analyze` | POST | 蜜罐检测分析 |
+| `/api/v1/sast/scan` | POST | SAST 代码审计 |
+| `/api/v1/dast/scan` | POST | DAST Web 扫描 |
+
 ---
 
 ## 📖 使用示例
 
 ### 启动 MCP 服务器
 ```bash
-# 启动服务器（默认端口 8888）
+# 启动传统服务器（默认端口 8888）
 python3 hexstrike_server.py
 
+# 启动增强版服务器（v7.0 新特性）
+python3 hexstrike_enhanced_server.py
+
 # 调试模式
-python3 hexstrike_server.py --debug
+python3 hexstrike_enhanced_server.py --debug
 
 # 自定义端口
-python3 hexstrike_server.py --port 8888
+python3 hexstrike_enhanced_server.py --port 8888
 ```
 
 ### 使用 CLI 工具
